@@ -8,28 +8,36 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 int
-aleat(long int tempo) 
+aleat(long int tempo)
 {
-        unsigned semente = tempo % 10000;
+        /* não é mais estática porque seu valor é atribuido após a compilação*/
+        auto unsigned semente, numAleat;
 
-        auto unsigned numAleat = semente % 100;
-        printf("semente: %d\n", semente);
+        semente = tempo%10000;
+
+        if (!(semente))
+                semente = rand();
+
+        numAleat = semente % 100;
 
         return numAleat;
-} 
+}
 
-int 
-main(void) 
+int
+main(void)
 {
-        int i; 
+        int i;
         long int tempo;
+
         time(&tempo);
 
-        for (int i = 0; i < 10; i++) {
-                tempo += tempo;
+        for (i = 0; i < 10; i++) {
+                tempo += tempo/13;
                 printf("%d\n", aleat(tempo));
         }
+
         return 0;
 }

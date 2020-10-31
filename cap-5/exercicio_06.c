@@ -42,11 +42,12 @@ main(void)
 
                 if (distancia > raio)
                         externo++;
-                else 
+                else {
                         if (distancia < raio)
                                 interno++;
                         else 
                                 pertencente++;
+                }
         }
 
         puts("Qtd. de ponto(s) externos, internos e pertencentes à circunferência, respectivamente:");
